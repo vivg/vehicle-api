@@ -39,7 +39,6 @@ class VehicleController extends Controller
         return response()->json($vehicles);
     }
 
-
     /**
      * Handles post request for vehicle details.
      *
@@ -56,7 +55,7 @@ class VehicleController extends Controller
 
         if (is_null($modelYear) || is_null($manufacturer) || is_null($model)) {
             return response()->json([
-                'Count' => 0,
+                'Count'   => 0,
                 'Results' => [],
             ]);
         }

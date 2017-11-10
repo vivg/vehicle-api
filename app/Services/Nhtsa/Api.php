@@ -27,7 +27,7 @@ class Api
     {
         // Create guzzle client
         $this->client = new Client([
-            'base_uri' => $this->baseUrl
+            'base_uri' => $this->baseUrl,
         ]);
     }
 
@@ -45,7 +45,7 @@ class Api
     {
         try {
             $vehicles = [
-                'Count' => 0,
+                'Count'   => 0,
                 'Results' => [],
             ];
 
@@ -69,14 +69,12 @@ class Api
             }
 
             return $vehicles;
-
         } catch (Exception $e) {
             return [
-                'Count' => 0,
+                'Count'   => 0,
                 'Results' => [],
             ];
         }
-
     }
 
     /**
@@ -107,10 +105,8 @@ class Api
             }
 
             return $vehicles;
-
         } catch (Exception $e) {
             throw $e;
         }
     }
-
 }
