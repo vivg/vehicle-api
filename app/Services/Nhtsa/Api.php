@@ -2,14 +2,14 @@
 
 namespace App\Services\Nhtsa;
 
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Promise;
-use Exception;
 
 class Api
 {
     /**
-     * NHTSA base url
+     * NHTSA base url.
      *
      * @var string
      */
@@ -32,12 +32,13 @@ class Api
     }
 
     /**
-     * Get details of vehicles by model year, make, and model
+     * Get details of vehicles by model year, make, and model.
      *
      * @param $modelYear
      * @param $make
      * @param $model
      * @param bool $includeRating
+     *
      * @return array
      */
     public function getVehicles($modelYear, $make, $model, $includeRating = false)
@@ -45,7 +46,7 @@ class Api
         try {
             $vehicles = [
                 'Count' => 0,
-                'Results' => []
+                'Results' => [],
             ];
 
             $requestUrl = "/webapi/api/SafetyRatings/modelyear/{$modelYear}/make/{$make}/model/{$model}?format=json";
@@ -63,7 +64,7 @@ class Api
             $vehicles['Count'] = $responseObject->Count;
             $vehicles['Results'] = $results;
 
-            if($includeRating) {
+            if ($includeRating) {
                 $vehicles = $this->getRatingForVehicles($vehicles);
             }
 
@@ -72,16 +73,17 @@ class Api
         } catch (Exception $e) {
             return [
                 'Count' => 0,
-                'Results' => []
+                'Results' => [],
             ];
         }
 
     }
 
     /**
-     * Include ratings for the vehicles
+     * Include ratings for the vehicles.
      *
      * @param array $vehicles
+     *
      * @return array
      * @throws Exception
      */
@@ -110,4 +112,5 @@ class Api
             throw $e;
         }
     }
+
 }

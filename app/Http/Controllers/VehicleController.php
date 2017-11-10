@@ -11,6 +11,7 @@ class VehicleController extends Controller
 
     /**
      * VehicleController constructor.
+     *
      * @param NhtsaApiService $api
      */
     public function __construct(NhtsaApiService $api)
@@ -19,12 +20,13 @@ class VehicleController extends Controller
     }
 
     /**
-     * Handles get request for vehicle details
+     * Handles get request for vehicle details.
      *
      * @param Request $request
      * @param $modelYear
      * @param $manufacturer
      * @param $model
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getData(Request $request, $modelYear, $manufacturer, $model)
@@ -39,9 +41,10 @@ class VehicleController extends Controller
 
 
     /**
-     * Handles post request for vehicle details
+     * Handles post request for vehicle details.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function postData(Request $request)
@@ -54,7 +57,7 @@ class VehicleController extends Controller
         if (is_null($modelYear) || is_null($manufacturer) || is_null($model)) {
             return response()->json([
                 'Count' => 0,
-                'Results' => []
+                'Results' => [],
             ]);
         }
 
